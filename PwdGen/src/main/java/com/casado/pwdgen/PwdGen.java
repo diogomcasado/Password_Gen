@@ -5,8 +5,10 @@
  */
 package com.casado.pwdgen;
 
+import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
@@ -93,6 +95,11 @@ public class PwdGen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Password Generator");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,12 +159,20 @@ public class PwdGen extends javax.swing.JFrame {
 
     private void btnCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopyActionPerformed
         Toolkit.getDefaultToolkit()
-        .getSystemClipboard()
-        .setContents(
-                new StringSelection(tfPassword.getText()),
-                null
-        );
+                .getSystemClipboard()
+                .setContents(
+                        new StringSelection(tfPassword.getText()),
+                        null
+                );
     }//GEN-LAST:event_btnCopyActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        try {
+            Desktop.getDesktop().browse(new URL("https://github.com/diogomcasado").toURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,7 +236,7 @@ public class PwdGen extends javax.swing.JFrame {
     private void newPwd() {
         boolean specialChars = chkSpecial.isSelected();
         int len = tryParse(tfValue.getText());
-        
+
         tfPassword.setText(Password.generateRandomPassword(len, specialChars));
     }
 }
