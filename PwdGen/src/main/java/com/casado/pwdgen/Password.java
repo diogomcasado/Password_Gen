@@ -12,26 +12,47 @@ import java.security.SecureRandom;
  * @author podiaserpior
  */
 public class Password {
-    public static String generateRandomPassword(int len, boolean special)
+    public static String generateRandomPassword(int len, String finalCharset)
     {
-        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        final String charsSpecial = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&*+-/:;<>=?@";
+        
  
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder();
   
         for (int i = 0; i < len; i++)
         {
-            if(special){
-            int randomIndex = random.nextInt(charsSpecial.length());
-            sb.append(charsSpecial.charAt(randomIndex));
-            } else {
-            int randomIndex = random.nextInt(chars.length());
-            sb.append(chars.charAt(randomIndex));
-            }
+            int randomIndex = random.nextInt(finalCharset.length());
+            sb.append(finalCharset.charAt(randomIndex));
         }
  
         return sb.toString();
+    }
+    
+    public static String setCharset(boolean special, boolean numbers, boolean upper, boolean lower){
+        final String charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        final String charsLower = "abcdefghijklmnopqrstuvwxyz";
+        final String charsSpecial = "!#$%&*+-/:;<>=?@";
+        final String charsNumbers = "0123456789";
+        
+        String finalCharset = "";
+        
+        if (special){
+            finalCharset += charsSpecial;
+        }
+        
+        if (numbers){
+            finalCharset += charsNumbers;
+        }
+        
+        if (upper){
+            finalCharset += charsUpper;
+        }
+        
+        if (lower){
+            finalCharset += charsLower;
+        }
+        
+        return finalCharset;
     }
  
     

@@ -45,11 +45,14 @@ public class PwdGen extends javax.swing.JFrame {
         chkSpecial = new javax.swing.JCheckBox();
         tfValue = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        chkUpper = new javax.swing.JCheckBox();
+        chkLower = new javax.swing.JCheckBox();
+        chkNumber = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        btnNew.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnNew.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnNew.setText("New");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +65,7 @@ public class PwdGen extends javax.swing.JFrame {
 
         jSlider.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jSlider.setMajorTickSpacing(10);
-        jSlider.setMaximum(25);
+        jSlider.setMaximum(24);
         jSlider.setMinimum(6);
         jSlider.setMinorTickSpacing(1);
         jSlider.setSnapToTicks(true);
@@ -78,7 +81,7 @@ public class PwdGen extends javax.swing.JFrame {
             }
         });
 
-        btnCopy.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCopy.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCopy.setText("Copy");
         btnCopy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +89,7 @@ public class PwdGen extends javax.swing.JFrame {
             }
         });
 
-        chkSpecial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        chkSpecial.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chkSpecial.setText("Special characters");
 
         tfValue.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -101,6 +104,17 @@ public class PwdGen extends javax.swing.JFrame {
             }
         });
 
+        chkUpper.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chkUpper.setSelected(true);
+        chkUpper.setText("Uppercase");
+
+        chkLower.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chkLower.setSelected(true);
+        chkLower.setText("Lowercase");
+
+        chkNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chkNumber.setText("Numbers");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,38 +122,51 @@ public class PwdGen extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfPassword)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkSpecial))
+                        .addComponent(jSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkLower)
+                            .addComponent(chkSpecial))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chkUpper, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(chkNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tfPassword))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(chkSpecial)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkLower)
+                    .addComponent(chkUpper))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkSpecial)
+                    .addComponent(chkNumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
                     .addComponent(btnCopy))
-                .addGap(30, 30, 30))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -212,7 +239,10 @@ public class PwdGen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCopy;
     private javax.swing.JButton btnNew;
+    private javax.swing.JCheckBox chkLower;
+    private javax.swing.JCheckBox chkNumber;
     private javax.swing.JCheckBox chkSpecial;
+    private javax.swing.JCheckBox chkUpper;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSlider jSlider;
     private javax.swing.JTextField tfPassword;
@@ -234,9 +264,23 @@ public class PwdGen extends javax.swing.JFrame {
     }
 
     private void newPwd() {
+        boolean lowerChars = chkLower.isSelected();
+        boolean upperChars = chkUpper.isSelected();
         boolean specialChars = chkSpecial.isSelected();
+        boolean numbersChars = chkNumber.isSelected();
+       
         int len = tryParse(tfValue.getText());
+        
+        if (!lowerChars && !upperChars && !specialChars && !numbersChars){
+            JOptionPane.showMessageDialog(null,"You must select at least one character set!");
+        } else {
+            
+        String finalCharset = Password.setCharset(specialChars, numbersChars, upperChars, lowerChars);
+        String finalPassword = (Password.generateRandomPassword(len, finalCharset));
+        
+        tfPassword.setText(finalPassword);
+        
+        }
 
-        tfPassword.setText(Password.generateRandomPassword(len, specialChars));
     }
 }
